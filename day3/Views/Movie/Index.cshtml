@@ -1,0 +1,20 @@
+﻿@model VidlysProject.ViewModels.RamdomMovieViewModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>@Model.Movie.Name</h2>
+@if (Model.Customers.Count == 0)
+{
+    <text>NO one has rented this Movie Before</text>
+}
+else
+{
+    <ul>
+        @foreach (var item in Model.Customers)
+        {
+            <li>@item.Name</li>
+        }
+    </ul>
+}
+

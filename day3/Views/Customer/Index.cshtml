@@ -1,0 +1,42 @@
+﻿@model IEnumerable<VidlysProject.Models.Customer>
+@{
+    ViewBag.Title = "Index";
+}
+<h1>
+    CUSTOMERS
+</h1>
+@if (!Model.Any())
+{
+    <p>We Dont have any customer yet.</p>
+}
+else
+{
+    <table class="table table-bordered table-hover"  >
+        <thead>
+
+            <tr>
+                <th>Customer</th>
+                @*<th>Discount Rate</th>*@
+                <th>Membership Type</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var customer in Model)
+            {
+<tr>
+    <td>
+        @Html.ActionLink(customer.Name, "Details", "Customer", new { id = customer.Id }, null)
+    </td>
+    @*<td>@customer.MembershipType.DiscountRate% </td>*@
+    <td>@customer.MembershipType.DurationInMonths</td>
+</tr>
+        }
+            </tbody>
+        </table>
+
+
+    }
+
+
+
+
