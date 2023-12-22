@@ -1,0 +1,61 @@
+﻿@*@model VidlysProject.ViewModels.RamdomMovieViewModel
+    @{
+        ViewBag.Title = "Index";
+    }
+
+    <h2>@Model.Movie.Name</h2>
+    @if (Model.Customers.Count == 0)
+    {
+        <text>NO one has rented this Movie Before</text>
+    }
+    else
+    {
+        <ul>
+            @foreach (var item in Model.Customers)
+            {
+                <li>@item.Name</li>
+            }
+        </ul>
+    }*@
+
+
+
+@model List<VidlysProject.Models.Movie>
+@{
+    ViewBag.Title = "Index";
+}
+<h1>
+    MOVIES
+</h1>
+<button>@Html.ActionLink("Add Movies","Create")</button>
+@if (!Model.Any())
+{
+    <p>We Dont have any Movies Added Yet!!!</p>
+}
+else
+{
+    <table class="table table-bordered table-hover">
+        <thead>
+
+            <tr>
+                <th>Movies</th>
+                @*<th>Discount Rate</th>*@
+                <th>Genre</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var movie in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.ActionLink(movie.Name, "Details", "Movie", new { id = movie.Id }, null)
+                    </td>
+                    @*<td>@movie.</td>*@
+                    @*<td>@customer.MembershipType.DiscountRate% </td>*@
+                    <td>@movie.Genre.Type</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+}
